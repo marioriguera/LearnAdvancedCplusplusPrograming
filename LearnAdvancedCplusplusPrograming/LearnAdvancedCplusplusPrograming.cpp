@@ -2,10 +2,35 @@
 //
 
 #include <iostream>
+#include <stdio.h>
+#include "LinkedListClassCourse.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	std::cout << "Course of c++ advanced programing!\n";
+	LinkedListClassCourse* linkedList = new LinkedListClassCourse();
+
+	//connection
+	linkedList->ConnectTwoNodes();
+	std::cout << "-----------------------------------!\n";
+	linkedList->Create(2);
+	linkedList->Create(3);
+	linkedList->Create(4);
+	linkedList->Display();
+	std::cout << "-----------------------------------!\n";
+	linkedList->InsertStart(1);
+	linkedList->Display();
+	std::cout << "-----------------------------------!\n";
+	linkedList->InsertPos(2, 8);
+	linkedList->Display();
+	std::cout << "-----------------------------------!\n";
+	linkedList->HowWorksDoublePointer(25);
+	std::cout << "-----------------------------------!\n";
+
+	//wait to user press some key.
+	getchar();
+
+	return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

@@ -128,6 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LearnAdvancedCplusplusPrograming.cpp" />
+    <ClCompile Include="LinkedListClassCourse.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinkedListClassCourse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
