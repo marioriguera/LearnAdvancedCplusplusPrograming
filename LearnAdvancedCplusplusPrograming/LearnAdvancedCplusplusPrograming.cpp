@@ -17,14 +17,25 @@ int main()
 	linkedList->Create(3);
 	linkedList->Create(4);
 	linkedList->Display();
+	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
 	std::cout << "-----------------------------------!\n";
 	linkedList->InsertStart(1);
 	linkedList->Display();
+	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
 	std::cout << "-----------------------------------!\n";
 	linkedList->InsertPos(2, 8);
 	linkedList->Display();
+	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
 	std::cout << "-----------------------------------!\n";
 	linkedList->HowWorksDoublePointer(25);
+	std::cout << "-----------------------------------!\n";
+	linkedList->DeleteNode(&linkedList->head, 2);
+	linkedList->Display();
+	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
+	std::cout << "-----------------------------------!\n";
+	linkedList->DeleteComplete(&linkedList->head);
+	linkedList->Display();
+	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
 	std::cout << "-----------------------------------!\n";
 
 	//wait to user press some key.

@@ -120,3 +120,80 @@ void LinkedListClassCourse::HowWorksDoublePointer(int num)
 	std::cout << "Value of dptr " << dptr << std::endl;
 }
 
+/**
+* @brief Delete a Node.
+*/
+void LinkedListClassCourse::DeleteNode(Node** head_ref, int key)
+{
+	struct Node* temp = *head_ref, * prev = nullptr;
+	if (temp != NULL and temp->data == key)
+	{
+		*head_ref = temp->next;
+		free(temp);
+		return;
+	}
+	while (temp != NULL && temp->data != key)
+	{
+		prev = temp;
+		temp = temp->next;
+	}
+	if (temp == NULL) return;
+
+	prev->next = temp->next;
+	free(temp);
+}
+
+/**
+* @brief Clean the linked list.
+*/
+void LinkedListClassCourse::DeleteComplete(Node** head_ref)
+{
+	Node* current = *head_ref;
+	Node* next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*head_ref = NULL;
+}
+
+/**
+* @brief Counts the number of items in a linked list.
+* @param head: Pointer to the head of the linked list.
+* @return Count of elements.
+*/
+int LinkedListClassCourse::Count(Node* head)
+{
+	int counting = 0;
+	Node* current = head;
+
+	while (current != nullptr)
+	{
+		counting++;
+		current = current->next;
+	}
+
+	return counting;
+}
+
+/**
+* @brief Search if exist a Node with esfecify data.
+* @param data: The data tp find.
+* @return If exist the data inside the linked list.
+*/
+bool LinkedListClassCourse::Exist(int data)
+{
+	Node* current = head;
+	while (current != NULL)
+	{
+		if (current->data == data) {
+			return true;
+		}
+		current = current->next;
+	}
+	return false;
+}
+

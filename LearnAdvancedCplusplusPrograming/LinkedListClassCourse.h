@@ -11,10 +11,8 @@ struct Node
 /// </summary>
 class LinkedListClassCourse
 {
-private:
-	Node* tail, * head;
-
 public:
+	Node* tail, * head;
 	LinkedListClassCourse();
 	void ConnectTwoNodes();
 	void Create(int value);
@@ -22,6 +20,10 @@ public:
 	void InsertStart(int value);
 	void InsertPos(int pos, int value);
 	void HowWorksDoublePointer(int num);
+	void DeleteNode(struct Node **head_ref, int key);
+	void DeleteComplete(Node** head_ref);
+	int Count(struct Node* head);
+	bool Exist(int data)
 };
 
 
