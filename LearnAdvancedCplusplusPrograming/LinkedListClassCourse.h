@@ -23,7 +23,11 @@ public:
 	void DeleteNode(struct Node **head_ref, int key);
 	void DeleteComplete(Node** head_ref);
 	int Count(struct Node* head);
-	bool Exist(int data)
+	bool Exist(int data);
+	void RemovingOfDuplicates();
+	void RemoveDuplicatesUnshortedList();
+	void ReversingSingleLinkedList();
+	void SeperateEvenOdd();
 };
 
 

@@ -116,8 +116,10 @@ void LinkedListClassCourse::HowWorksDoublePointer(int num)
 	int* ptr = &num; // pointer to num
 	std::cout << "Value of &num " << &num << std::endl;
 	std::cout << "Value of ptr  " << ptr << std::endl;
+	std::cout << "Value of *ptr  " << *ptr << std::endl;
 	int** dptr = &ptr; // double pointer to ptr
 	std::cout << "Value of dptr " << dptr << std::endl;
+	std::cout << "Value of **dptr " << **dptr << std::endl;
 }
 
 /**
@@ -196,4 +198,141 @@ bool LinkedListClassCourse::Exist(int data)
 	}
 	return false;
 }
+
+/**
+* @brief Removing nodes with duplicate data.
+*/
+void LinkedListClassCourse::RemovingOfDuplicates()
+{
+	Node* current = head;
+	Node* nextOfNext;
+
+	if (current == NULL)
+	{
+		return;
+	}
+
+	while (current->next != NULL)
+	{
+		if (current->data == current->next->data) {
+			nextOfNext = current->next->next;
+			free(current->next);
+			current->next = nextOfNext;
+		}
+		else
+		{
+			current = current->next;
+		}
+	}
+}
+
+/**
+* @brief Removing duplicates nodes from a unsorted linked list.
+*/
+void LinkedListClassCourse::RemoveDuplicatesUnshortedList()
+{
+	Node* ptr1, * ptr2, * duplicate;
+	ptr1 = head;
+
+	ptr2 = ptr1;
+	while (ptr2->next != NULL)
+	{
+		if (ptr1->data == ptr2->next->data)
+		{
+			duplicate = ptr2->next;
+			ptr2->next = ptr2->next->next;
+			delete(duplicate);
+		}
+		else
+		{
+			ptr2 = ptr2->next;
+		}
+	}
+	ptr1 = ptr1->next;
+}
+
+
+/**
+* @brief Reversing a sinlge linked list.
+*/
+void LinkedListClassCourse::ReversingSingleLinkedList()
+{
+	Node* current = head;
+	Node* before = NULL, * after = NULL;
+
+	while (current != NULL)
+	{
+		after = current->next;
+		current->next = before;
+
+		before = current;
+		current = after;
+	}
+	head = before;
+}
+
+/**
+* @brief Separate the odd numbers from the original list.
+*/
+void LinkedListClassCourse::SeperateEvenOdd()
+{
+	Node* end = head;
+	Node* prev = NULL;
+	Node* curr = head;
+
+	while (end->next != NULL)
+	{
+		end = end->next;
+	}
+
+	Node* new_end = end;
+
+	while ((curr->data) % 2 != 0 && curr != end)
+	{
+		new_end->next = curr;
+		curr = curr->next;
+		new_end->next->next = NULL;
+		new_end = new_end->next;
+	}
+
+	if ((curr->data) % 2 == 0)
+	{
+		head = curr;
+		while (curr != end)
+		{
+			if (curr->data % 2 == 0)
+			{
+				prev = curr;
+				curr = curr->next;
+			}
+			else
+			{
+				prev->next = curr->next;
+				curr->next = NULL;
+				//	ToDo: Revisar con los compañeros. Esto aquí no tiene sentido.
+				//	Primero coge el current y lo ponen en el siguiente a new end
+				//	para despues sobrescribir new end con el mismo valor
+				//	no tiene sentido.
+				new_end->next = curr;
+				new_end = curr;
+				//	he de mencionar que lo anterior funciona para el correcto comportamiento.
+				curr = prev->next;
+			}
+		}
+	}
+	else
+	{
+		prev = curr;
+	}
+
+	if (new_end != end && (end->data) % 2 != 0)
+	{
+		prev->next = end->next;
+		end->next = NULL;
+		new_end->next = end;
+	}
+
+	return;
+}
+
 

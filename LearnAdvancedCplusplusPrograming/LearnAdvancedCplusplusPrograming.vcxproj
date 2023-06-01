@@ -127,11 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DoubleLinkedListClassCourse.cpp" />
     <ClCompile Include="LearnAdvancedCplusplusPrograming.cpp" />
     <ClCompile Include="LinkedListClassCourse.cpp" />
+    <ClCompile Include="TemplateExamples.cpp" />
+    <ClCompile Include="ThreadLessons.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoubleLinkedListClassCourse.h" />
     <ClInclude Include="LinkedListClassCourse.h" />
+    <ClInclude Include="TemplateExamples.h" />
+    <ClInclude Include="ThreadLessons.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LearnAdvancedCplusplusPrograming.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

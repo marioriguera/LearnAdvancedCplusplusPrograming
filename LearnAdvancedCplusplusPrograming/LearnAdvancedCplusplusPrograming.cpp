@@ -3,16 +3,29 @@
 
 #include <iostream>
 #include <stdio.h>
-#include "LinkedListClassCourse.h"
+#include <vector>
+#include <thread>
+#include "ThreadLessons.h"
 
 int main()
 {
+	std::cout << "THREADS!\n";
+	ThreadLessons* threadLesson = new ThreadLessons();
+	threadLesson->ThreadLessonsVoidFunction();
+	//wait to user press some key.
+	getchar();
+
+	return 0;
+}
+
+/* DENTRO DEL MAIN
+
 	std::cout << "Course of c++ advanced programing!\n";
 	LinkedListClassCourse* linkedList = new LinkedListClassCourse();
 
 	//connection
 	linkedList->ConnectTwoNodes();
-	std::cout << "-----------------------------------!\n";
+	std::cout << "--------SECTION 1 LINKED LIST---------------------------!\n";
 	linkedList->Create(2);
 	linkedList->Create(3);
 	linkedList->Create(4);
@@ -26,23 +39,79 @@ int main()
 	linkedList->InsertPos(2, 8);
 	linkedList->Display();
 	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
-	std::cout << "-----------------------------------!\n";
+	std::cout << "-----How works double pointer------------------------------!\n";
 	linkedList->HowWorksDoublePointer(25);
-	std::cout << "-----------------------------------!\n";
+	std::cout << "--------Deleting node---------------------------!\n";
 	linkedList->DeleteNode(&linkedList->head, 2);
 	linkedList->Display();
 	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
-	std::cout << "-----------------------------------!\n";
+	std::cout << "--------Cleaning the List---------------------------!\n";
 	linkedList->DeleteComplete(&linkedList->head);
 	linkedList->Display();
 	std::cout << "Count of elemnts " << linkedList->Count(linkedList->head) << std::endl;
+	std::cout << "---Before remove duplicates--------------------------------!\n";
+	linkedList->Create(2);
+	linkedList->Create(2);
+	linkedList->Create(3);
+	linkedList->Create(3);
+	linkedList->Create(4);
+	linkedList->Create(5);
+	linkedList->Display();
+	std::cout << "---After remove duplicates--------------------------------!\n";
+	linkedList->RemovingOfDuplicates();
+	linkedList->Display();
+	std::cout << "----Before remove duplicates unshorted list-------------------------------!\n";
+	std::cout << "----JUST REMOVE THE FIRST MATCH-------------------------------!\n";
+	linkedList->DeleteComplete(&linkedList->head);
+	linkedList->Create(5);
+	linkedList->Create(7);
+	linkedList->Create(7);
+	linkedList->Create(5);
+	linkedList->Create(5);
+	linkedList->Display();
+	std::cout << "----After remove duplicates unshorted list-------------------------------!\n";
+	linkedList->RemoveDuplicatesUnshortedList();
+	linkedList->Display();
+	std::cout << "---Before reversing a linked list--------------------------------!\n";
+	linkedList->DeleteComplete(&linkedList->head);
+	linkedList->Create(2);
+	linkedList->Create(3);
+	linkedList->Create(4);
+	linkedList->Create(5);
+	linkedList->Display();
+	std::cout << "----After reversing a linked list-------------------------------!\n";
+	linkedList->ReversingSingleLinkedList();
+	linkedList->Display();
+	std::cout << "-----Before segregate a linked list------------------------------!\n";
+	linkedList->DeleteComplete(&linkedList->head);
+	linkedList->Create(20);
+	linkedList->Create(3);
+	linkedList->Create(41);
+	linkedList->Create(6);
+	linkedList->Create(12);
+	linkedList->Create(9);
+	linkedList->Create(15);
+	linkedList->Create(14);
+	linkedList->Display();
+	std::cout << "----After segregate a linked list-------------------------------!\n";
+	linkedList->SeperateEvenOdd();
+	linkedList->Display();
 	std::cout << "-----------------------------------!\n";
+	std::cout << "-----Before segregate a linked list------------------------------!\n";
+	linkedList->DeleteComplete(&linkedList->head);
+	linkedList->Create(5);
+	linkedList->Create(2);
+	linkedList->Display();
+	std::cout << "----After segregate a linked list-------------------------------!\n";
+	linkedList->SeperateEvenOdd();
+	linkedList->Display();
+	std::cout << "-----------------------------------!\n";
+	DoubleLinkedListClassCourse* doubleLinkedList = new DoubleLinkedListClassCourse();
 
-	//wait to user press some key.
-	getchar();
-
-	return 0;
-}
+	std::cout << "-----------------------------------!\n";
+	std::cout << "-----------------------------------!\n";
+	std::cout << "-----------------------------------!\n";
+*/
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
