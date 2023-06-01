@@ -10,4 +10,3 @@ public:
 	void ThreadLessonsVoidFunction();
 	void PartialSum(const std::vector<int>& vec, int start, int end, int& result);
 };
-
