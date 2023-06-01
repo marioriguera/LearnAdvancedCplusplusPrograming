@@ -9,9 +9,15 @@
 
 int main()
 {
-	std::cout << "THREADS!\n";
 	ThreadLessons* threadLesson = new ThreadLessons();
+	std::cout << "THREADS!\n";
+	std::cout << "\n";
 	threadLesson->ThreadLessonsVoidFunction();
+	std::cout << "\n";
+	std::cout << "Mutex --------------------------------------------!\n";
+	std::cout << "\n";
+	threadLesson->MainMutexExamples();
+
 	//wait to user press some key.
 	getchar();
 
