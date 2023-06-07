@@ -17,6 +17,10 @@ int main()
 	std::cout << "Mutex --------------------------------------------!\n";
 	std::cout << "\n";
 	threadLesson->MainMutexExamples();
+	std::cout << "\n";
+	std::cout << "Semaphore c++ 14 --------------------------------------------!\n";
+	std::cout << "\n";
+	threadLesson->MainSemaphoreExamples();
 
 	//wait to user press some key.
 	getchar();

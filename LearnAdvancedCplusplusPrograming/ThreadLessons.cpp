@@ -59,26 +59,84 @@ void ThreadLessons::PrintMessage(const std::string& message)
 }
 
 /*
+* @brief Printing message. Using mutex inside with lock guard.
+* @param message : Memory address from a message.
+*/
+void ThreadLessons::PrintMessageLockGuard(const std::string& message)
+{
+	std::lock_guard<std::mutex> lock(ThreadLessons::Mtx);  // Acquire the mutex manually
+
+	// Sección crítica protegida por el cerrojo
+	for (int i = 0; i < 5; ++i) {
+		std::cout << message << "\n" << std::endl;
+	}
+}
+
+/*
+* @brief example of using a semaphore.
+*/
+void ThreadLessons::WorkerThread(int id, Semaphore& semaphore)
+{
+	semaphore.Wait();
+	std::cout << "Thread " << id << " iniciado." << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+	std::cout << "Thread " << id << " finalizado." << std::endl;
+	semaphore.Signal();
+}
+
+/*
 * @brief Main funtion to practice use of mutex.
 */
 void ThreadLessons::MainMutexExamples()
 {
 	//std::thread t1(&ThreadLessons::PrintMessage, "Hello");
 	auto message1 = "Hello";
-	std::thread t1([message1]()
+	auto message3 = "Hello Guard";
+	std::thread t1([message1, message3]()
 	{
 		ThreadLessons obj;
 		obj.PrintMessage(message1);
+		obj.PrintMessageLockGuard(message3);
 	});
 
 	//std::thread t2(&ThreadLessons::PrintMessage, "World");
 	auto message2 = "World";
-	std::thread t2([message2]()
+	auto message4 = "World guard";
+	std::thread t2([message2, message4]()
 	{
 		ThreadLessons obj;
 		obj.PrintMessage(message2);
+		obj.PrintMessageLockGuard(message4);
 	});
 
 	t1.join();
 	t2.join();
+}
+
+/*
+* @brief Main funtion to practice use of semaphores.
+*/
+void ThreadLessons::MainSemaphoreExamples()
+{
+	Semaphore semaphore(2); // Semáforo con capacidad inicial de 2
+
+	// std::thread t1(WorkerThread, 1, std::ref(semaphore));
+	std::thread t1([&]() 
+	{
+		WorkerThread(1, std::ref(semaphore));
+	});
+	// std::thread t2(WorkerThread, 2, std::ref(semaphore));
+	std::thread t2([&]()
+	{
+		WorkerThread(2, std::ref(semaphore));
+	});
+	//std::thread t3(WorkerThread, 3, std::ref(semaphore));
+	std::thread t3([&]()
+	{
+		WorkerThread(3, std::ref(semaphore));
+	});
+
+	t1.join();
+	t2.join();
+	t3.join();
 }
